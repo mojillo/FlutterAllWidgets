@@ -1,4 +1,7 @@
+import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:fluttertests/every_widgets/serialization.dart';
 import 'package:fluttertests/every_widgets/widget005.dart';
 import 'package:fluttertests/every_widgets/widget009.dart';
 import 'package:fluttertests/every_widgets/widget010.dart';
@@ -9,6 +12,7 @@ import 'every_widgets/widget004.dart';
 import 'every_widgets/widget006.dart';
 import 'every_widgets/widget011.dart';
 import 'every_widgets/widget012.dart';
+import 'every_widgets/widget013.dart';
 import 'every_widgets/widget_001.dart';
 import 'every_widgets/widgets007.dart';
 
@@ -22,9 +26,18 @@ void main() {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  UserModel userObject =
+      UserModel(id: "0001", fullname: "Abc", email: "abc@efg.com");
+
+  String userJson = '{"id": "0001","fullname":"Abc","email":"abc@efg.com"}';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,23 +128,40 @@ class MyApp extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const Widget001()));
-                },
-                child: const Text('001- About'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const Widget012()));
                 },
                 child: const Text('012- Animated List'),
               ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                // Serialization
+                ElevatedButton(
+                  onPressed: () {
+                    Map<String, dynamic> userMap = userObject.toMap();
+                    var json = jsonEncode(userMap);
+                    log(json.toString());
+                  },
+                  child: const Text('Serialize'),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                //DeSerialize
+                ElevatedButton(
+                  onPressed: () {
+                    var decoded = jsonDecode(userJson);
+                    Map<String, dynamic> userMap = decoded;
+                    UserModel newUser = new UserModel.fromMap(userMap);
+                    print(newUser.toString());
+                  },
+                  child: const Text('De-Serialize'),
+                ),
+              ]),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const Widget001()));
+                      builder: (context) => const Widget013()));
                 },
-                child: const Text('001- About'),
+                child: const Text('013- Animate Modal Barrier'),
               ),
               ElevatedButton(
                 onPressed: () {

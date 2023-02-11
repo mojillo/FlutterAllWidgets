@@ -1,4 +1,4 @@
-// This is an example of the widget :
+// This is an example of the widget : Animated List
 import 'package:flutter/material.dart';
 
 class Widget012 extends StatefulWidget {

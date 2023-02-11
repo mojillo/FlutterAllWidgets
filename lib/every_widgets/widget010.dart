@@ -1,4 +1,4 @@
-// This is an example of the widget : AnimatedDefaultTextStyel
+// This is an example of the widget : AnimatedTextStyle
 import 'package:flutter/material.dart';
 
 class Widget010 extends StatefulWidget {
@@ -41,7 +41,7 @@ class _Widget010State extends State<Widget010> {
                   _first = !_first;
                 });
               },
-              child: Text('Switch'),
+              child: const Text('Switch'),
             )
           ],
         ),
