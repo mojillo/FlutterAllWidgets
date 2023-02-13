@@ -1,18 +1,23 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
-import 'dart:developer';
+
+// import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:fluttertests/every_widgets/serialization.dart';
 import 'package:fluttertests/every_widgets/widget005.dart';
 import 'package:fluttertests/every_widgets/widget009.dart';
 import 'package:fluttertests/every_widgets/widget010.dart';
+import 'package:fluttertests/every_widgets/widget014.dart';
 import 'package:fluttertests/every_widgets/widgets008.dart';
+
 import 'every_widgets/widget002.dart';
 import 'every_widgets/widget003.dart';
 import 'every_widgets/widget004.dart';
 import 'every_widgets/widget006.dart';
 import 'every_widgets/widget011.dart';
 import 'every_widgets/widget012.dart';
-import 'every_widgets/widget013.dart';
+// import 'every_widgets/widget013.dart';
 import 'every_widgets/widget_001.dart';
 import 'every_widgets/widgets007.dart';
 
@@ -138,37 +143,39 @@ class _MyAppState extends State<MyApp> {
                   onPressed: () {
                     Map<String, dynamic> userMap = userObject.toMap();
                     var json = jsonEncode(userMap);
-                    log(json.toString());
+                    print(json.toString());
                   },
                   child: const Text('Serialize'),
                 ),
                 const SizedBox(
                   width: 10,
                 ),
+
                 //DeSerialize
                 ElevatedButton(
                   onPressed: () {
                     var decoded = jsonDecode(userJson);
                     Map<String, dynamic> userMap = decoded;
-                    UserModel newUser = new UserModel.fromMap(userMap);
+                    UserModel newUser = UserModel.fromMap(userMap);
+
                     print(newUser.toString());
                   },
                   child: const Text('De-Serialize'),
                 ),
               ]),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     Navigator.of(context).push(MaterialPageRoute(
+              //         builder: (context) => const Widget013()));
+              //   },
+              //   child: const Text('013- Animate Modal Barrier'),
+              // ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const Widget013()));
+                      builder: (context) => const CirclingBox()));
                 },
-                child: const Text('013- Animate Modal Barrier'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const Widget001()));
-                },
-                child: const Text('001- About'),
+                child: const Text('014- Circling Box'),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -219,59 +226,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-//import 'package:flutter/material.dart';
-
-// void main() => runApp(MyApp());
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter Demo',
-//       theme: ThemeData(primarySwatch: Colors.blue),
-//       home: HomeScreen(),
-//     );
-//   }
-// }
-
-// class HomeScreen extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: const Text('Home Screen')),
-//       body: Center(
-//         child: ElevatedButton(
-//           child: const Text(
-//             'Navigate to a new screen >>',
-//             style: TextStyle(fontSize: 24.0),
-//           ),
-//           onPressed: () {
-//             _navigateToNextScreen(context);
-//           },
-//         ),
-//       ),
-//     );
-//   }
-
-//   void _navigateToNextScreen(BuildContext context) {
-//     Navigator.of(context)
-//         .push(MaterialPageRoute(builder: (context) => NewScreen()));
-//   }
-// }
-
-// class NewScreen extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: const Text('New Screen')),
-//       body: const Center(
-//         child: Text(
-//           'This is a new screen',
-//           style: TextStyle(fontSize: 24.0),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// 
