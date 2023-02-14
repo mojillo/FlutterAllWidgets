@@ -9,6 +9,8 @@ import 'package:fluttertests/every_widgets/widget005.dart';
 import 'package:fluttertests/every_widgets/widget009.dart';
 import 'package:fluttertests/every_widgets/widget010.dart';
 import 'package:fluttertests/every_widgets/widget014.dart';
+import 'package:fluttertests/every_widgets/widget015.dart';
+import 'package:fluttertests/every_widgets/widget016.dart';
 import 'package:fluttertests/every_widgets/widgets008.dart';
 
 import 'every_widgets/widget002.dart';
@@ -180,16 +182,16 @@ class _MyAppState extends State<MyApp> {
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const Widget001()));
+                      builder: (context) => const SpinningCircle()));
                 },
-                child: const Text('001- About'),
+                child: const Text('015- Spinning Circle'),
               ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const Widget001()));
+                      builder: (context) => const RotatingCube()));
                 },
-                child: const Text('001- About'),
+                child: const Text('016- Rotating Cube'),
               ),
               ElevatedButton(
                 onPressed: () {
